@@ -1,5 +1,19 @@
 <p> <%= @brand %> </p>
 
+<% html = "<p> Hi </p>" %>
+<% @tags.each do |media_item| %>
+
+    <% link = media_item.link %>
+
+    <% image = media_item.images.standard_resolution.url %>
+
+    <% html << "<img src=#{image} />"  %>
+
+<% end %>
+
+<%#= html %>
+
 <% @tags.each do |tags| %>
     <%= image_tag tags.images.standard_resolution.url %>
 <% end %>
+
