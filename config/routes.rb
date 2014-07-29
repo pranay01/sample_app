@@ -5,4 +5,6 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/instagram', to: "home#index", via: 'get'
+  match '/results', to: "home#instagram_results", via: 'post'
+
 end

@@ -1,5 +1,27 @@
     <% @instagram.each do |instagram| %>
 
-    <%= image_tag instagram.images.standard_resolution.url %>
+    <%#= image_tag instagram.images.standard_resolution.url %>
+
 
     <% end %>
+<p>   Select Brand </p>
+<%= select_tag(:brand_id,options_for_select([['Coca Cola', 1], ['Starbucks', 2], ['Others',3]], 1)) %>
+<p><%= @out %></p>
+
+<form accept-charset="UTF-8" action="/clients" method="post">
+  <input type="text" name="client[name]" value="Acme" />
+  <input type="text" name="client[phone]" value="12345" />
+  <input type="text" name="client[address][postcode]" value="12345" />
+  <input type="text" name="client[address][city]" value="Carrot City" />
+  <input type="submit" value="Submit">
+</form>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_tag("/results", method: "post") do %>
+  	<%= label_tag(:brandname, "Enter brand name:") %>
+  	<%= text_field_tag(:brandname) %>
+ 	 <%= submit_tag("Submit") %>
+	<% end %>
+	</div>
+</div>
