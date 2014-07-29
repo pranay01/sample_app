@@ -1,4 +1,4 @@
-   class HomeController < ApplicationController
+class HomeController < ApplicationController
 
     def index
         @instagram = Instagram.user_recent_media("459355170", {:count => 1})
@@ -7,7 +7,8 @@
 
     def instagram_results
     	@brand = params[:brandname]
+  		@tags = Instagram.tag_recent_media(@brand)
     end
-    
-    end
+end
+
 

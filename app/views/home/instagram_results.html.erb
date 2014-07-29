@@ -1,1 +1,5 @@
 <p> <%= @brand %> </p>
+
+<% @tags.each do |tags| %>
+    <%= image_tag tags.images.standard_resolution.url %>
+<% end %>

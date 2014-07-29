@@ -6,7 +6,6 @@
     <% end %>
 <p>   Select Brand </p>
 <%= select_tag(:brand_id,options_for_select([['Coca Cola', 1], ['Starbucks', 2], ['Others',3]], 1)) %>
-<p><%= @out %></p>
 
 <form accept-charset="UTF-8" action="/clients" method="post">
   <input type="text" name="client[name]" value="Acme" />
