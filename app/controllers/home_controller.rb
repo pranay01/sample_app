@@ -1,5 +1,4 @@
 require 'open-uri'
-
 class HomeController < ApplicationController
 
     def index
@@ -9,16 +8,17 @@ class HomeController < ApplicationController
 
     def instagram_results
     	@brand = params[:brandname]
-  		@tags = Instagram.tag_recent_media(@brand)
-  		@tags.map do |p|
-	    	open('image.jpg', 'wb') do |file|
-  				file << open(p.images.standard_resolution.url).read 
-			end
-		end
+        tags = Instagram.tag_recent_media(@brand)
+        puts tags.class
 
-		`convert image.jpg image.pgm`
-		`./tech_gen image.pgm`
-    end
+        tags.map do |p|
+        	puts p
+        	puts "\n\n\n"
+        end
+
+        #@tags is an array and not an instance variable
+  		Resque.enqueue(ImageProcessor,tags)
+  	end
 
 end
 

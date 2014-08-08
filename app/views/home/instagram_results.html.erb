@@ -1,28 +1,22 @@
-<% require 'open-uri' %>
 <p> <%= @brand %> </p>
 
-<% html = "<p> Hi </p>" %>
-<% @tags.each do |media_item| %>
+<%# html = "<p> Hi </p>" %>
+<%# @tags.each do |media_item| %>
 
-    <% link = media_item.link %>
+    <%# link = media_item.link %>
 
-    <% image = media_item.images.standard_resolution.url %>
+    <%# image = media_item.images.standard_resolution.url %>
 
-    <% html << "<img src=#{image} />"  %>
+    <%# html << "<img src=#{image} />"  %>
 
-<% end %>
+<%# end %>
 
 <%#= html %>
-<p> <%#= @tags %> </p>
+<p> <%#= @tags %> Success! </p>
 
-<% @tags.map do |p| %>
-	<% puts p.images.standard_resolution.url %>
-	<% open('image.jpg', 'wb') do |file| %>
-  		<% file << open(p.images.standard_resolution.url).read %>
-	<% end %>
-<% end %>
 
-<% @tags.each do |tags| %>
+
+<%# @tags.each do |tags| %>
     <%#= image_tag tags.images.standard_resolution.url %>
-<% end %>
+<%# end %>
 
