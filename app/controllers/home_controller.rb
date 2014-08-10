@@ -11,11 +11,8 @@ class HomeController < ApplicationController
         tags = Instagram.tag_recent_media(@brand)
         puts tags.class
 
-        tags.map do |p|
-        	puts p
-        	puts "\n\n\n"
-        end
-
+        post = Post.new(source:"Instagram" , username:"pranay01" , image_url:"www.google.com" , local_add: "pranay", brand:"Cola" , processed:0)
+        post.save!
         #@tags is an array and not an instance variable
   		Resque.enqueue(ImageProcessor,tags)
   	end

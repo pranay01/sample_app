@@ -9,6 +9,7 @@ gem 'bootstrap-sass'
 gem 'sprockets'
 gem 'instagram'
 gem 'sinatra'
+gem 'jquery-rails'
 
 group :development, :test do
 	gem 'sqlite3'
