@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
     def index
         @instagram = Instagram.user_recent_media("459355170", {:count => 1})
-        @out =  `ls -la`
+        @posts = Post.where("image_url is NOT NULL and id > ?", params[:after_id])
     end
 
     def instagram_results
@@ -11,9 +11,6 @@ class HomeController < ApplicationController
         tags = Instagram.tag_recent_media(@brand)
         puts tags.class
 
-        post = Post.new(source:"Instagram" , username:"pranay01" , image_url:"www.google.com" , local_add: "pranay", brand:"Cola" , processed:0)
-        post.save!
-        #@tags is an array and not an instance variable
   		Resque.enqueue(ImageProcessor,tags)
   	end
 
